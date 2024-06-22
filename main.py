@@ -12,15 +12,15 @@ firebase_admin.initialize_app(cred, {
 app = FastAPI()
 
 class User:
-    name: str
-    stats: dict
+    key: str
+    value: dict
     
-# @app.post('/user')
-# def add_user(user: User):
-#     main = db.collection()
-#     main.set(user)
+@app.post('/new')
+def add_user(user: User):
+    main = db.reference("/")
+    main.update({User.name: User.stats})
 
-@app.get('/')
+@app.get('/users')
 def get_users():
     ref = db.reference("/").get()
     return ref
