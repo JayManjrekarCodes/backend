@@ -18,9 +18,9 @@ class User:
 @app.post('/new')
 def add_user(user: User):
     main = db.reference("/")
-    main.update({User.name: User.stats})
+    main.update({User.key: User.value})
 
-@app.get('/users')
+@app.get('/Mihir')
 def get_users():
     ref = db.reference("/").get()
     return ref
